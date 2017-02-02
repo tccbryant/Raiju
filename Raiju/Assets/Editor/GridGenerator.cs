@@ -23,6 +23,7 @@ public class GridGenerator : ScriptableWizard {
     {
         //should make a function to check if there is a tile already there
         GenerateGrid(length, width);
+        CreateTileManager();
     }
 
     //function to generate grid, should split into multiple functions eventually
@@ -35,7 +36,7 @@ public class GridGenerator : ScriptableWizard {
         GameObject ter = CreateTerrain();
         
         
-        //iterate along the rows
+        //iterate up right axis
         for (int i =0; i< y; i++)
         {
             //these three lines of code organize the tiles into rows
@@ -43,12 +44,12 @@ public class GridGenerator : ScriptableWizard {
             cur_row.name = "row " + i;
             cur_row.transform.SetParent(ter.transform);
 
-            //iterate along the columns
+            //iterate along up left axis
             for(int j = 0; j < x; j++)
             {
                 //Instantiates a tile prefab at the coordinates generated no rotation and as a child of the row object
                 GameObject this_tile = (GameObject) Instantiate(tile, new Vector3(curx, cury, cury*2), Quaternion.identity, cur_row.transform);
-                InitializeTile(this_tile, i, j);                
+                InitializeTile(this_tile, j, i);                
 
                 //iterate along the row
                 curx -= 1f;
@@ -72,7 +73,7 @@ public class GridGenerator : ScriptableWizard {
         GameObject tm = GameObject.FindGameObjectWithTag(tile_manager_tag);
         if(tm != null)
         {
-            GameObject.Destroy(tm);
+            GameObject.DestroyImmediate(tm);
         }
 
         //initialize the tile manager
@@ -82,6 +83,8 @@ public class GridGenerator : ScriptableWizard {
         Tile_Manager_Script tm_script = tm.AddComponent<Tile_Manager_Script>();
 
         tm_script.CreateArray(GameObject.FindGameObjectsWithTag("tile"),length, width);
+        tm_script.length = length;
+        tm_script.width = width;
     }
 
     //function to name and set the coordinates of each tile
