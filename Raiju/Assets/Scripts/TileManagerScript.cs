@@ -7,7 +7,7 @@ using UnityEngine;
 //it is hard to deal with the 2d array because it is
 //hard to see what is going on inside it
 
-public class Tile_Manager_Script : MonoBehaviour {
+public class TileManagerScript : MonoBehaviour {
 
     public GameObject[,] tile_array;
     public Sprite onSprite;
@@ -15,14 +15,20 @@ public class Tile_Manager_Script : MonoBehaviour {
     public int length;
     public int width;
 
+    public void Awake()
+    {
+        //should find a way to initialize without needing length and width
+        CreateArray(GameObject.FindGameObjectsWithTag("tile"), length, width);
+    }
+
     //sets up the 2d array based on the array of tiles
     public void CreateArray(GameObject[] tiles, int x, int y)
     {
         GameObject[,] test = new GameObject[x,y];
         foreach(GameObject tile in tiles)
         {
-            int i = (int) tile.GetComponent<Node_Attributes>().x_coord;
-            int j = (int) tile.GetComponent<Node_Attributes>().y_coord;
+            int i = (int) tile.GetComponent<NodeAttributes>().x_coord;
+            int j = (int) tile.GetComponent<NodeAttributes>().y_coord;
             test[i, j] = tile;
             //Debug.Log(i);
         }
@@ -33,8 +39,7 @@ public class Tile_Manager_Script : MonoBehaviour {
     //returns the tile specified, null if the index doesnt exist
     public GameObject GetTile(int x, int y)
     {
-        //this shouldnt be here :|
-        CreateArray(GameObject.FindGameObjectsWithTag("tile"), length, width);
+        
         if (x < length && x >= 0 && y < width && y >= 0)
         {
             return tile_array[x, y];
@@ -51,7 +56,7 @@ public class Tile_Manager_Script : MonoBehaviour {
             for(int j = 0; j < y; j++)
             {
                 GameObject tile = tile_array[i, j];
-                Node_Attributes att = tile.GetComponent<Node_Attributes>();
+                NodeAttributes att = tile.GetComponent<NodeAttributes>();
                 Debug.Log(att.x_coord + ", " + att.y_coord);
             }
         }

@@ -75,10 +75,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Node_Attributes.cs" />
-    <Compile Include="Assets\Scripts\Tile_Manager_Script.cs" />
-    <Compile Include="Assets\Source_Script.cs" />
-    <Compile Include="Assets\Wire_Script.cs" />
+    <Compile Include="Assets\Scripts\NodeAttributes.cs" />
+    <Compile Include="Assets\Scripts\PuzzleNode.cs" />
+    <Compile Include="Assets\Scripts\SourceNode.cs" />
+    <Compile Include="Assets\Scripts\TileManagerScript.cs" />
+    <Compile Include="Assets\Scripts\WireNode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

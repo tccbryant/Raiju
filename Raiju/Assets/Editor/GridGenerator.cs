@@ -80,7 +80,7 @@ public class GridGenerator : ScriptableWizard {
         tm = new GameObject();
         tm.tag = tile_manager_tag;
         tm.name = "tile_manager";
-        Tile_Manager_Script tm_script = tm.AddComponent<Tile_Manager_Script>();
+        TileManagerScript tm_script = tm.AddComponent<TileManagerScript>();
 
         tm_script.CreateArray(GameObject.FindGameObjectsWithTag("tile"),length, width);
         tm_script.length = length;
@@ -95,7 +95,7 @@ public class GridGenerator : ScriptableWizard {
         tile.name = tile_name;
 
         //fill in the tile's coordinates
-        Node_Attributes att = tile.GetComponent<Node_Attributes>();
+        NodeAttributes att = tile.GetComponent<NodeAttributes>();
         att.x_coord = x;
         att.y_coord = y;
     }

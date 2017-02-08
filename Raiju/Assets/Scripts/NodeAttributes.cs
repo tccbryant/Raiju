@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Node_Attributes : MonoBehaviour {
+public class NodeAttributes : MonoBehaviour {
     private GameObject[] adjacent;
 
     public float x_coord;
