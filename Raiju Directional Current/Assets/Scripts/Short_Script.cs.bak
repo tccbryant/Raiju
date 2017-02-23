@@ -1,0 +1,15 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Short_Script : MonoBehaviour {  //this serves to be a tile you DONT want to power. Doing so causes the entire flow to stop
+   public bool current = false;
+   
+
+  public void defeat(){
+  GetComponent<SpriteRenderer>().sprite = Resources.Load <Sprite> ("tiles/tile_020");
+  Debug.Log("You hit a short");
+  
+  //DO defeat stuff
+  }
+}

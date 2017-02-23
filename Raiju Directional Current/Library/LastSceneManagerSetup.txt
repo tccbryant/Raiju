@@ -1,0 +1,4 @@
+sceneSetups:
+- path: D:/D-ApplicationFiles/GitHub/Raiju Dev 1.1/Assets/Scene2.unity
+  isLoaded: 1
+  isActive: 1

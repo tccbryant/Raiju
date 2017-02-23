@@ -1,0 +1,21 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Switch_Script : MonoBehaviour {
+   private bool switchState = false;
+   
+
+  public void switchFunc(){
+  if(switchState){  //switch is thrown
+  
+  }else{ //switch is not thrown
+  
+  }
+  GetComponent<SpriteRenderer>().sprite = Resources.Load <Sprite> ("tiles/tile_020");
+  
+  //DO VICTORIOUS THINGS
+  }
+  
+  public void switchChange(){ switchState = !switchState;}
+}
