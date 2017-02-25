@@ -17,23 +17,6 @@ public class Wire_Script : MonoBehaviour {
     //public bool canRotate = false
    //Sprite[] sprites = Resources.LoadAll <Sprite> ("tiles");  
 
-   public void OnMouseOver(){// this is just a sample code for being able to switch a corner piece to a straight piece
-      if(Input.GetKeyDown(KeyCode.RightShift)){
-         if(straight == true){
-         straight = false;
-         connectTopL = true;
-         connectTopR = true;
-         connectBotL = false;
-         connectBotR = false;
-         }else{
-         straight = true;
-         connectTopL = true;
-         connectTopR = false;
-         connectBotL = false;
-         connectBotR = true;
-         }
-      }
-   }
    
 	public void OnMouseDown(){
    if(!this.current){ //cannot rotate if current is true
@@ -93,13 +76,11 @@ public class Wire_Script : MonoBehaviour {
     
     
     public void SendCurrent(){
-    
         GameObject tm = GameObject.FindGameObjectWithTag("tile_manager");
         Tile_Manager_Script tm_script = tm.GetComponent<Tile_Manager_Script>();
         Node_Attributes att = GetComponent<Node_Attributes>();
 		  
         changeSprite();
-        
         //TE: These check the parameters of the tile and change it's sprite accordingly. NOTE: this uses the individual sprites in the Resources folder NOT the ones in Sprites, hence why they are named without the "work" as to make an easy visible distinction. 
       
         int x = (int)att.x_coord;
@@ -171,7 +152,6 @@ public class Wire_Script : MonoBehaviour {
          nearby[3].GetComponent<Goal_Script>().victory();
       }
       } 
-         
    }//end SendCurrent  
     
     
@@ -234,6 +214,7 @@ public class Wire_Script : MonoBehaviour {
          }
          
       }
+   
    }//end RemoveCurrent
    
 }//end CLASS
